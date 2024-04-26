@@ -2,7 +2,7 @@ class FeatureDisplay {
   constructor(containerSelector, options) {
     this.container = document.querySelector(containerSelector);
     this.options = {
-      animationType: "move-in", // default animation type
+      animationType: "moveIn", // default animation type
       animationDuration: 500, // default animation duration in milliseconds
       ...options, // override defaults with user-provided options
     };
