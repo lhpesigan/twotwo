@@ -38,7 +38,9 @@ class FeatureDisplay {
       setTimeout(() => {
         imageToShow.style.visibility = "visible";
         imageToShow.style.opacity = 1;
+        console.log('Before adding class:', imageToShow.classList.toString());
         imageToShow.classList.add(this.options.animationType);
+        console.log('After adding class:', imageToShow.classList.toString());
       }, 10);
     }
   }
