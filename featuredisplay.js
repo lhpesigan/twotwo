@@ -19,11 +19,13 @@ class FeatureDisplay {
   hideAllImages() {
     console.log('Hiding all images');
     this.allImages.forEach((image) => {
+      console.log(`Processing image: ${image.src}`);
       image.style.opacity = 0;
       image.style.visibility = "hidden";
       image.style.display = "none";
+      console.log(`Styles after applying: display=${image.style.display}, visibility=${image.style.visibility}, opacity=${image.style.opacity}`);
     });
-  }
+}
 
   showImageForRadio(radioId) {
     console.log('Showing image for:', radioId);
