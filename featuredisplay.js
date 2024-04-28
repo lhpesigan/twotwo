@@ -1,20 +1,21 @@
 class FeatureDisplay {
   constructor(containerSelector, options) {
-    console.log('Initializing FeatureDisplay');
-    this.container = document.querySelector(containerSelector);
-    if (!this.container) {
-      console.error('Failed to find container:', containerSelector);
-      return;
-    }
-    this.options = {
-      animationType: "move-in",
-      animationDuration: 500,
-      ...options,
-    };
-    this.allImages = this.container.querySelectorAll(".feature-image-wrapper img");
-    this.setupEventListeners();
-    this.showImageForRadio("feature1");
+  this.container = document.querySelector(containerSelector);
+  if (!this.container) {
+    console.error('Container not found:', containerSelector);
+    return;
   }
+  this.options = {
+    animationType: "moveIn",
+    animationDuration: 500,
+    ...options,
+  };
+  this.allImages = this.container.querySelectorAll(".feature-image-wrapper img");
+  console.log('All images found:', this.allImages.length, this.allImages);
+  this.setupEventListeners();
+  this.showImageForRadio("feature1");
+}
+
 
   hideAllImages() {
     console.log('Hiding all images');
