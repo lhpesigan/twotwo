@@ -28,20 +28,22 @@ class FeatureDisplay {
     });
 }
 
-  showImageForRadio(radioId) {
-    console.log('Showing image for:', radioId);
-    const imageId = radioId.replace("feature", "image");
-    const imageToShow = document.getElementById(imageId);
-    this.hideAllImages();
-    if (imageToShow) {
-      imageToShow.style.display = "block";
-      setTimeout(() => {
-        imageToShow.style.visibility = "visible";
-        imageToShow.style.opacity = 1;
-        imageToShow.classList.add(this.options.animationType);
-      }, 10);
-    }
+showImageForRadio(radioId) {
+  const imageId = radioId.replace("feature", "image");
+  const imageToShow = document.getElementById(imageId);
+  this.hideAllImages();  // Ensure all other images are hidden before showing the new one
+  if (imageToShow) {
+    // Set display before visibility to prepare for animation
+    imageToShow.style.display = "block";
+    // Use a small timeout to ensure display change has taken effect before applying animation
+    setTimeout(() => {
+      imageToShow.style.visibility = "visible";
+      imageToShow.style.opacity = 1;
+      imageToShow.classList.add(this.options.animationType); // Apply the animation class as specified in the options
+    }, 10);
   }
+}
+
 
   setupEventListeners() {
   console.log('Setting up event listeners');
