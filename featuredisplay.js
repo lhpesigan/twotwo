@@ -41,20 +41,24 @@ class FeatureDisplay {
   }
 
   setupEventListeners() {
-    console.log('Setting up event listeners');
-    this.container.addEventListener("click", (event) => {
-      console.log('Clicked inside container');
-      const target = event.target.closest(".feature-radio, .feature-list-item");
-      if (!target) {
-        console.log('No valid target found');
-        return;
-      }
-      const radioId = target.tagName === "LABEL" ? target.getAttribute("for") : target.id;
-      if (radioId) {
-        this.showImageForRadio(radioId);
-      }
-    });
-  }
+  console.log('Setting up event listeners');
+  this.container.addEventListener("click", (event) => {
+    const target = event.target.closest(".feature-radio, .feature-list-item");
+    console.log('Clicked inside container', target);
+    if (!target) {
+      console.log('No valid target found');
+      return;
+    }
+
+    const radioId = target.tagName === "LABEL" ? target.getAttribute("for") : target.id;
+    console.log('Derived radioId:', radioId);
+
+    if (radioId) {
+      this.showImageForRadio(radioId);
+    }
+  });
+}
+
 }
 
 export default FeatureDisplay;
