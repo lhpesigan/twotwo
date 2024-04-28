@@ -1,19 +1,23 @@
 class FeatureDisplay {
   constructor(containerSelector, options) {
+    console.log('Initializing FeatureDisplay');
     this.container = document.querySelector(containerSelector);
+    if (!this.container) {
+      console.error('Failed to find container:', containerSelector);
+      return;
+    }
     this.options = {
-      animationType: "moveIn", // default animation type
-      animationDuration: 500, // default animation duration in milliseconds
-      ...options, // override defaults with user-provided options
+      animationType: "move-in",
+      animationDuration: 500,
+      ...options,
     };
-    this.allImages = this.container.querySelectorAll(
-      ".feature-image-wrapper img"
-    );
+    this.allImages = this.container.querySelectorAll(".feature-image-wrapper img");
     this.setupEventListeners();
-    this.showImageForRadio("feature1"); // Show first feature by default
+    this.showImageForRadio("feature1");
   }
 
   hideAllImages() {
+    console.log('Hiding all images');
     this.allImages.forEach((image) => {
       image.style.opacity = 0;
       image.style.visibility = "hidden";
@@ -22,6 +26,7 @@ class FeatureDisplay {
   }
 
   showImageForRadio(radioId) {
+    console.log('Showing image for:', radioId);
     const imageId = radioId.replace("feature", "image");
     const imageToShow = document.getElementById(imageId);
     this.hideAllImages();
@@ -36,12 +41,15 @@ class FeatureDisplay {
   }
 
   setupEventListeners() {
+    console.log('Setting up event listeners');
     this.container.addEventListener("click", (event) => {
+      console.log('Clicked inside container');
       const target = event.target.closest(".feature-radio, .feature-list-item");
-      if (!target) return;
-
-      const radioId =
-        target.tagName === "LABEL" ? target.getAttribute("for") : target.id;
+      if (!target) {
+        console.log('No valid target found');
+        return;
+      }
+      const radioId = target.tagName === "LABEL" ? target.getAttribute("for") : target.id;
       if (radioId) {
         this.showImageForRadio(radioId);
       }
