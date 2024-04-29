@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+    <style>
+      /* Styles for the animations, define more if needed */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveIn {
+  from { transform: translateX(-4rem); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+  }
+}
+
+/* Styles for the images inside the image wrapper */
+.feature-image-wrapper img {
+  display: none; /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s; /* Delay visibility transition until opacity transition ends */
+}
+
+/* Styles for animation-in of the image */
+.feature-image-wrapper img.moveIn {
+  animation: moveIn 0.5s ease-out;
+  animation-fill-mode: forwards; /* Keeps the state at the end of the animation */
+}
+
+.feature-image-wrapper img.fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+
+/* Styles below depends on the project, the following styles is not related to the FeatureDisplay Class */
+
+.feature-image-wrapper {
+  background-color: #f1f1f1;
+  margin-top: 20px; /* Added for spacing */
+  padding: 20px; /* Added for spacing */
+}
+
+.feature-list-item {
+  color: #3a3a3a;
+  cursor: pointer;
+  background-color: rgba(239, 239, 239, 0);
+  border-bottom: 1px solid #ededed;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 1.625rem;
+  padding-bottom: 1.625rem;
+  transition: all 0.3s;
+  display: flex;
+}
+
+.feature-list-item:hover {
+  color: #181818;
+}
+
+.feature-radio {
+  width: 100%;
+  display: none;
+}
+
+.feature-list-item-text {
+  font-size: 2rem;
+  transition: font-variation-settings 0.12s;
+}
+
+/* Normal state of the arrow icon */
+.feature-list-item-icon-arrow {
+  opacity: 0;
+  width: 36px;
+  transition: transform 0.525s, opacity 0.25s; /* Adjust this value accordingly */
+  transform: translate(-16px); /* Adjust this value accordingly */
+}
+
+/* Show the arrow icon when the corresponding radio button is checked */
+#feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-icon-arrow,
+#feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-icon-arrow,
+#feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-icon-arrow,
+#feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-icon-arrow {
+  opacity: 1;
+  transform: translate(0px);
+}
+
+/* Show the active state of the text when the corresponding radio button is checked */
+#feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-text,
+#feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-text,
+#feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-text,
+#feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-text {
+  font-variation-settings: "wght" 542;
+  color: #181818;
+}
+    </style>
+  </head>
+  <body>
+    <div class="features-container">
+
+    <div class="features-grid-wrapper">
+      <div>
+        <input
+          class="feature-radio"
+          type="radio"
+          name="feature"
+          id="feature1"
+          role="radio"
+          aria-checked="true"
+          checked
+        />
+        <label
+          class="feature-list-item"
+          for="feature1"
+          tabindex="0"
+          role="radio"
+        >
+          <div class="feature-list-item-text">Feature 1</div>
+          <svg
+            class="feature-list-item-icon-arrow"
+            viewbox="0 0 36 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 6.75h34.5382m0 0L28.7882 1m5.75 5.75-5.75 5.75"
+              stroke="#000"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </label>
+        <input
+          class="feature-radio"
+          type="radio"
+          name="feature"
+          id="feature2"
+          role="radio"
+          aria-checked="false"
+        />
+        <label
+          class="feature-list-item"
+          for="feature2"
+          tabindex="0"
+          role="radio"
+        >
+          <div class="feature-list-item-text">Feature 2</div>
+          <svg
+            class="feature-list-item-icon-arrow"
+            viewbox="0 0 36 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 6.75h34.5382m0 0L28.7882 1m5.75 5.75-5.75 5.75"
+              stroke="#000"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </label>
+        <!-- Add more radio buttons and labels as needed -->
+      </div>
+    </div>
+
+    <div id="feature-img-wrapper" class="feature-image-wrapper">
+      <img
+        id="image1"
+        src="images/image.svg"
+        alt="Image 1"
+      />
+      <img
+        id="image2"
+        src="images/image.svg"
+        alt="Image 2"
+      />
+      <!-- Add more images as needed -->
+    </div>
+    </div>
+
+    <!-- Add JS code here -->
+    <script type="module"> // use type = module attribute
+
+      import FeatureDisplay from 'https://lhpesigan.github.io/twotwo.design/featuredisplay.js';
+
+  document.addEventListener('DOMContentLoaded', function () {
+      const options = {
+          animationType: 'moveIn',
+          animationDuration: 300
+      };
+      new FeatureDisplay('.features-container', options);
+  });
+
+</script>
+
+  </body>
+</html>
