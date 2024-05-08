@@ -30,73 +30,72 @@
         }
       }
 
+      /* Styles below depends on the project, the following styles is not related to the FeatureDisplay Class */
+      .for-testing {
+        width: 10rem;
+        height: 10rem;
+        background-color:#2b40ac;
+      }
 
-/* Styles below depends on the project, the following styles is not related to the FeatureDisplay Class */
-.for-testing {
-  width: 10rem;
-  height: 10rem;
-  background-color:#2b40ac;
-}
+      .feature-image-wrapper {
+        background-color: #f1f1f1;
+        margin-top: 20px; /* Added for spacing */
+        padding: 20px; /* Added for spacing */
+      }
 
-.feature-image-wrapper {
-  background-color: #f1f1f1;
-  margin-top: 20px; /* Added for spacing */
-  padding: 20px; /* Added for spacing */
-}
+      .feature-list-item {
+        color: #3a3a3a;
+        cursor: pointer;
+        background-color: rgba(239, 239, 239, 0);
+        border-bottom: 1px solid #ededed;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-top: 1.625rem;
+        padding-bottom: 1.625rem;
+        transition: all 0.3s;
+        display: flex;
+      }
 
-.feature-list-item {
-  color: #3a3a3a;
-  cursor: pointer;
-  background-color: rgba(239, 239, 239, 0);
-  border-bottom: 1px solid #ededed;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-top: 1.625rem;
-  padding-bottom: 1.625rem;
-  transition: all 0.3s;
-  display: flex;
-}
+      .feature-list-item:hover {
+        color: #181818;
+      }
 
-.feature-list-item:hover {
-  color: #181818;
-}
+      .feature-radio {
+        width: 100%;
+        display: none;
+      }
 
-.feature-radio {
-  width: 100%;
-  display: none;
-}
+      .feature-list-item-text {
+        font-size: 2rem;
+        transition: font-variation-settings 0.12s;
+      }
 
-.feature-list-item-text {
-  font-size: 2rem;
-  transition: font-variation-settings 0.12s;
-}
+      /* Normal state of the arrow icon */
+      .feature-list-item-icon-arrow {
+        opacity: 0;
+        width: 36px;
+        transition: transform 0.525s, opacity 0.25s; /* Adjust this value accordingly */
+        transform: translate(-16px); /* Adjust this value accordingly */
+      }
 
-/* Normal state of the arrow icon */
-.feature-list-item-icon-arrow {
-  opacity: 0;
-  width: 36px;
-  transition: transform 0.525s, opacity 0.25s; /* Adjust this value accordingly */
-  transform: translate(-16px); /* Adjust this value accordingly */
-}
+      /* Show the arrow icon when the corresponding radio button is checked */
+      #feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-icon-arrow,
+      #feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-icon-arrow,
+      #feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-icon-arrow,
+      #feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-icon-arrow {
+        opacity: 1;
+        transform: translate(0px);
+      }
 
-/* Show the arrow icon when the corresponding radio button is checked */
-#feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-icon-arrow,
-#feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-icon-arrow,
-#feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-icon-arrow,
-#feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-icon-arrow {
-  opacity: 1;
-  transform: translate(0px);
-}
-
-/* Show the active state of the text when the corresponding radio button is checked */
-#feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-text,
-#feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-text,
-#feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-text,
-#feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-text {
-  font-variation-settings: "wght" 542;
-  color: #181818;
-}
+      /* Show the active state of the text when the corresponding radio button is checked */
+      #feature1:checked ~ .feature-list-item[for="feature1"] .feature-list-item-text,
+      #feature2:checked ~ .feature-list-item[for="feature2"] .feature-list-item-text,
+      #feature3:checked ~ .feature-list-item[for="feature3"] .feature-list-item-text,
+      #feature4:checked ~ .feature-list-item[for="feature4"] .feature-list-item-text {
+        font-variation-settings: "wght" 542;
+        color: #181818;
+      }
     </style>
   </head>
   <body>
