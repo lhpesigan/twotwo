@@ -6,10 +6,11 @@ class FeatureDisplay {
     }
     this.options = {
       animationType: "fd_moveIn",
-      animationDuration: 500, // Consider this value for timing issues
+      animationDuration: 500,
       ...options,
     };
-    this.allTargets = this.container.querySelectorAll(".feature-image-wrapper img, .feature-image-wrapper div");
+    // Updated selector to target elements with the data attribute
+    this.allTargets = this.container.querySelectorAll(".feature-image-wrapper img, .feature-image-wrapper div[data-feature-display='true']");
     this.setupEventListeners();
     this.showElementForRadio("feature1");
   }
