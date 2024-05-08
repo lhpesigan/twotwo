@@ -21,6 +21,12 @@
   }
 }
 
+.for-testing {
+  width: 5rem;
+  height: 5rem;
+  background-color: #2B3C96;
+}
+
 /* Styles for the images inside the image wrapper */
 .feature-image-wrapper img {
   display: none; /* Hidden by default */
@@ -175,11 +181,9 @@
         src="images/Image1.webp"
         alt="Image 1"
       />
-      <img
-        id="image2"
-        src="images/Image2.webp"
-        alt="Image 2"
-      />
+      <div id="div2" class="for-testing">
+
+      </div>
       <!-- Add more images as needed -->
     </div>
     </div>
@@ -187,7 +191,7 @@
     <!-- Add JS code here -->
     <script type="module"> // use type = module attribute
 
-      import FeatureDisplay from 'https://lhpesigan.github.io/twotwo.design/featuredisplay.js';
+      import FeatureDisplay from 'https://lhpesigan.github.io/twotwo.design/featuredisplay-2.js';
 
   document.addEventListener('DOMContentLoaded', function () {
       const options = {
