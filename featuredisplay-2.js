@@ -9,7 +9,6 @@ class FeatureDisplay {
       animationDuration: 500,
       ...options,
     };
-    // Updated selector to target elements with the data attribute
     this.allTargets = this.container.querySelectorAll(".feature-image-wrapper img, .feature-image-wrapper div[data-feature-display='true']");
     this.setupEventListeners();
     this.showElementForRadio("feature1");
@@ -17,7 +16,9 @@ class FeatureDisplay {
 
   hideAllTargets() {
     this.allTargets.forEach((element) => {
-      element.classList.add("fd_hidden");
+      if (element.dataset.featureDisplay !== 'false') {
+        element.classList.add("fd_hidden");
+      }
     });
   }
 
@@ -26,14 +27,14 @@ class FeatureDisplay {
     const imgToShow = document.getElementById(`image${elementSuffix}`);
     const divToShow = document.getElementById(`div${elementSuffix}`);
     this.hideAllTargets();
-    setTimeout(() => { // Ensure all elements are hidden before showing new ones
+    setTimeout(() => {
       [imgToShow, divToShow].forEach(element => {
-        if (element) {
+        if (element && element.dataset.featureDisplay !== 'false') {
           element.classList.remove("fd_hidden");
-          element.classList.add(this.options.animationType); // Apply animation
+          element.classList.add(this.options.animationType);
         }
       });
-    }, this.options.animationDuration); // Sync with CSS transition duration
+    }, this.options.animationDuration);
   }
 
   setupEventListeners() {
