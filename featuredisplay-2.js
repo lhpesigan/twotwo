@@ -31,6 +31,7 @@ class FeatureDisplay {
       [imgToShow, divToShow].forEach(element => {
         if (element && element.dataset.featureDisplay !== 'false') {
           element.classList.remove("fd_hidden");
+          element.setAttribute('aria-hidden', 'false');
           element.classList.add(this.options.animationType);
         }
       });
